@@ -1,15 +1,11 @@
-
-
 var model = {
   watchlistItems: [],
   browseItems: []
-}
-
+};
 
 var api = {
-
   root: "https://api.themoviedb.org/3",
-  token: "TODO", // TODO 0 add your api key
+  token: "e7f97a7595d99356ba2dbf15d9696923", // TODO 0 add your api key
 
   /**
    * Given a movie object, returns the url to its poster image
@@ -18,10 +14,9 @@ var api = {
     // TODO 4b
     // implement this function
 
-    return "http://images5.fanpop.com/image/photos/25100000/movie-poster-rapunzel-and-eugene-25184488-300-450.jpg" 
+    return "http://images5.fanpop.com/image/photos/25100000/movie-poster-rapunzel-and-eugene-25184488-300-450.jpg";
   }
-}
-
+};
 
 /**
  * Makes an AJAX request to themoviedb.org, asking for some movies
@@ -42,9 +37,8 @@ function discoverMovies(callback) {
   });
 }
 
-
 /**
- * Makes an AJAX request to the /search endpoint of the API, using the 
+ * Makes an AJAX request to the /search endpoint of the API, using the
  * query string that was passed in
  *
  * if successful, updates model.browseItems appropriately and then invokes
@@ -64,12 +58,10 @@ function searchMovies(query, callback) {
   });
 }
 
-
 /**
  * re-renders the page with new content, based on the current state of the model
  */
 function render() {
-
   // clear everything
   $("#section-watchlist ul").empty();
   $("#section-browse ul").empty();
@@ -78,7 +70,7 @@ function render() {
   model.watchlistItems.forEach(function(movie) {
     var title = $("<h6></h6>").text(movie.original_title);
 
-    // TODO 1 
+    // TODO 1
     // add an "I watched it" button and append it below the title
     // Clicking should remove this movie from the watchlist and re-render
 
@@ -86,7 +78,7 @@ function render() {
     // apply the classes "btn btn-danger" to the "I watched it button"
 
     // TODO 4a
-    // add a poster image and append it inside the 
+    // add a poster image and append it inside the
     // panel body above the button
 
     // TODO 2g
@@ -100,12 +92,11 @@ function render() {
 
   // insert browse items
   model.browseItems.forEach(function(movie) {
-
     // TODO 2d continued
     // style this list item to look like the demo
     // You'll also need to make changes in index.html.
     // use the following BS classes:
-    // "list-group", "list-group-item", btn", "btn-primary", 
+    // "list-group", "list-group-item", btn", "btn-primary",
 
     var title = $("<h4></h4>").text(movie.original_title);
 
@@ -124,13 +115,11 @@ function render() {
       .append(title)
       .append(overview)
       .append(button);
-      
+
     // append the itemView to the list
     $("#section-browse ul").append(itemView);
   });
-  
 }
-
 
 // When the HTML document is ready, we call the discoverMovies function,
 // and pass the render function as its callback
